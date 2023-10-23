@@ -2018,6 +2018,15 @@ func BoxNew(orientation Orientation, spacing int) (*Box, error) {
 	return wrapBox(obj), nil
 }
 
+// func (v *Box) Clear() {
+// 	v.Hide()
+// 	v.GetChildren().Foreach(func(item interface{}) {
+// 		iconv := item.(*Widget)
+// 		iconv.Destroy()
+// 	})
+// 	v.Show()
+// }
+
 // PackStart() is a wrapper around gtk_box_pack_start().
 func (v *Box) PackStart(child IWidget, expand, fill bool, padding uint) {
 	C.gtk_box_pack_start(v.native(), child.toWidget(), gbool(expand),
@@ -5498,6 +5507,15 @@ func GridNew() (*Grid, error) {
 	}
 	obj := glib.Take(unsafe.Pointer(c))
 	return wrapGrid(obj), nil
+}
+
+func (v *Grid) Clear() {
+	v.Hide()
+	v.GetChildren().Foreach(func(item interface{}) {
+		iconv := item.(*Widget)
+		iconv.Destroy()
+	})
+	v.Show()
 }
 
 // Attach() is a wrapper around gtk_grid_attach().

@@ -1,3 +1,3 @@
-module github.com/gotk3/gotk3
+module github.com/GeoLMg/gotk3-simple
 
 go 1.14
